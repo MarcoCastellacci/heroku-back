@@ -4,9 +4,10 @@ const citiesControllers = {
     getCities: async(req, res) => {
         let cities
         let error = null
-        console.log(res);
+        // console.log(res);
         try {
         cities = await Cities.find()
+        console.log(cities);
     }  catch (err) { error = err }
     res.json({
         response: error ? 'ERROR' : {cities},
