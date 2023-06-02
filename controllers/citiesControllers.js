@@ -4,6 +4,7 @@ const citiesControllers = {
     getCities: async(req, res) => {
         let cities
         let error = null
+        console.log(res);
         try {
         cities = await Cities.find()
     }  catch (err) { error = err }
