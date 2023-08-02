@@ -8,13 +8,14 @@ const citiesControllers = {
         try {
             cities = await cities.find()
             console.log(cities);
-        } catch (err) { error = err }
-        console.error(err)
-        res.json({
-            response: error ? 'ERROR' : { cities },
-            success: error ? false : true,
-            error: error
-        })
+        } catch (err) {
+            console.error("Error fetching cities:", err);
+            res.json({
+                response: error ? 'ERROR' : { cities },
+                success: error ? false : true,
+                error: err
+            })
+        }
     },
     getOneCity: async (req, res) => {
         const id = req.params.id
