@@ -4,7 +4,7 @@ const itinerarySchema = new mongoose.Schema({
     name: {type: String, required: true},
     nameUser: {type: String, required: true},
     imageUser: {type: String, required: true},
-    activities: [{type: mongoose.Types.ObjectId, ref: 'Activity'}],
+    activities: [{type: mongoose.Types.ObjectId, ref: 'activity'}],
     price: {type: Number, required: true},
     time: {type: Number, required: true},
     likes: {type: Array, required: true},
@@ -12,10 +12,10 @@ const itinerarySchema = new mongoose.Schema({
     image: {type: String, required: true},
     comments: [{
         comment: {type: String},
-        user: {type:mongoose.Types.ObjectId, ref: 'User'},
+        user: {type:mongoose.Types.ObjectId, ref: 'user'},
         }],
-    city: {type: mongoose.Types.ObjectId, ref: 'Cities'},
+    city: {type: mongoose.Types.ObjectId, ref: 'cities'},
 })
 
-const Itinerary = mongoose.model('Itinerary', itinerarySchema);
+const Itinerary = mongoose.model('itinerary', itinerarySchema);
 module.exports = Itinerary

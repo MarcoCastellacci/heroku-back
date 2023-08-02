@@ -2,18 +2,23 @@ const Cities = require('../models/city');
 
 const citiesControllers = {
     getCities: async (req, res) => {
-        let cities
-        let error = null
+        // let cities
+        // let error = null
         try {
-            cities = await Cities.find()
-            console.log(cities);
+            const cities = await Cities.findOne({ country: "Brazil" });
+            console.log("respuesta de GetCities", cities);
+            res.json({
+                response: cities,
+                success: true
+            });
+            console.log(res.data);
         } catch (err) {
             console.error("Error fetching cities:", err);
             res.json({
-                response: error ? 'ERROR' : { cities },
-                success: error ? false : true,
+                response: 'ERROR',
+                success: false,
                 error: err
-            })
+            });
         }
     },
     getOneCity: async (req, res) => {
