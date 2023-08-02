@@ -1,27 +1,28 @@
 const Cities = require('../models/city');
 
 const citiesControllers = {
-    getCities: async(req, res) => {
+    getCities: async (req, res) => {
         let cities
         let error = null
         // console.log(res);
         try {
-        cities = await cities.find()
-        console.log(cities);
-    }  catch (err) { error = err }
-    res.json({
-        response: error ? 'ERROR' : {cities},
-        success: error ? false : true,
-        error: error
-    })
+            cities = await cities.find()
+            console.log(cities);
+        } catch (err) { error = err }
+        console.error(err)
+        res.json({
+            response: error ? 'ERROR' : { cities },
+            success: error ? false : true,
+            error: error
+        })
     },
-    getOneCity: async(req, res) => {
+    getOneCity: async (req, res) => {
         const id = req.params.id
         let city
         let error = null
         try {
-        city = await Cities.findOne({_id: id})
-        }  
+            city = await Cities.findOne({ _id: id })
+        }
         catch (err) { error = err }
         console.log(error)
         res.json({
@@ -31,16 +32,16 @@ const citiesControllers = {
         })
     },
     addCity: async (req, res) => {
-        const {name, country, info, image} = req.body
+        const { name, country, info, image } = req.body
         let city
         let error = null
         try {
-        city = await new Cities({
+            city = await new Cities({
                 name: name,
                 country: country,
                 info: info,
                 image: image
-                }).save()
+            }).save()
         }
         catch (err) { error = err }
         console.log(error)
@@ -50,17 +51,17 @@ const citiesControllers = {
             error: error
         })
     },
-    modifyCity: async(req, res) =>{
+    modifyCity: async (req, res) => {
         const id = req.params.id
-        const city = req.body.data  
+        const city = req.body.data
         let citydb
         let error = null
-        try{
-            citydb = await Cities.findOneAndUpdate({_id: id}, city, {new: true})
+        try {
+            citydb = await Cities.findOneAndUpdate({ _id: id }, city, { new: true })
         }
         catch (err) { error = err }
         res.json({
-            response: error?'ERROR': citydb,
+            response: error ? 'ERROR' : citydb,
             success: error ? false : true,
             error: error
         })
@@ -70,14 +71,14 @@ const citiesControllers = {
         let city
         let error = null
         try {
-        data.map(async (item) => {
-        await new Cities({
-                name: item.name,
-                country: item.country,
-                info: item.info,
-                image: item.image
+            data.map(async (item) => {
+                await new Cities({
+                    name: item.name,
+                    country: item.country,
+                    info: item.info,
+                    image: item.image
                 }).save()
-        })
+            })
         }
         catch (err) { error = err }
         res.json({
@@ -86,12 +87,12 @@ const citiesControllers = {
             error: error
         })
     },
-    removeCity: async(req, res) => {
-            const id = req.params.id
-            let city
-            let error = null
+    removeCity: async (req, res) => {
+        const id = req.params.id
+        let city
+        let error = null
         try {
-            city = await Cities.findOneAndDelete({_id:id})
+            city = await Cities.findOneAndDelete({ _id: id })
         }
         catch (err) { error = err }
         res.json({
@@ -99,6 +100,6 @@ const citiesControllers = {
             success: error ? false : true,
             error: error
         })
-    }      
+    }
 }
 module.exports = citiesControllers
