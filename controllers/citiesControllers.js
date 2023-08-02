@@ -4,9 +4,8 @@ const citiesControllers = {
     getCities: async (req, res) => {
         let cities
         let error = null
-        // console.log(res);
         try {
-            cities = await cities.find()
+            cities = await Cities.find()
             console.log(cities);
         } catch (err) {
             console.error("Error fetching cities:", err);
