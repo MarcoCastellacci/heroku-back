@@ -4,7 +4,7 @@ const activitySchema = new mongoose.Schema({
     name: { type: String, required: true },
     image: { type: String, required: true },
     info: { type: String, required: true },
-    itinerary: { type: mongoose.Types.ObjectId, ref: 'itinerary' },
+    itinerary: { type: mongoose.Types.ObjectId, ref: 'itineraries' },
 })
 
 const Activity = mongoose.model('activities', activitySchema);
