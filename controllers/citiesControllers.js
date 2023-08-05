@@ -5,7 +5,7 @@ const citiesControllers = {
         // let cities
         // let error = null
         try {
-            const cities = await Cities.findOne({ country: "Brazil" });
+            const cities = await Cities.find();
             console.log("respuesta de GetCities", cities);
             res.json({
                 response: cities,
