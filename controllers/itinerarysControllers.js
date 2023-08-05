@@ -6,13 +6,12 @@ const itineraryController = {
     getItinerarys: async (req, res) => {
         let itinerarys
         let error = null
-        let { id } = req.params
         try {
             itinerarys = await Itinerary.find()
                 .populate('city')
                 .populate('activities')
                 .populate('comments.user')
-            console.log(itinerarys);
+            // console.log(itinerarys);
         } catch (err) {
             res.json({
                 response: error ? 'ERROR' : { itinerarys },
@@ -38,7 +37,7 @@ const itineraryController = {
         })
     },
     addItinerary: async (req, res) => {
-        const { name, nameUser, imageUser, activities, price, time, likes, hashtags, image } = req.body
+        const { name, nameUser, imageUser, activities, price, time, likes, hashtags, image, city } = req.body
         let itinerary
         let error = null
         try {
@@ -54,6 +53,7 @@ const itineraryController = {
                 image: image,
                 city: city
             }).save()
+        console.log(itinerary);
         } catch (err) {
             res.json({
                 response: error ? 'ERROR' : itinerary,
