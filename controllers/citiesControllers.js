@@ -11,7 +11,6 @@ const citiesControllers = {
                 response: cities,
                 success: true
             });
-            console.log(res.data);
         } catch (err) {
             console.error("Error fetching cities:", err);
             res.json({

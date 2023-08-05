@@ -12,7 +12,7 @@ const itineraryController = {
                 .populate('city')
                 .populate('activities')
                 .populate('comments.user')
-        console.log(itinerarys);
+            console.log(itinerarys);
         } catch (err) {
             res.json({
                 response: error ? 'ERROR' : { itinerarys },
@@ -54,12 +54,13 @@ const itineraryController = {
                 image: image,
                 city: city
             }).save()
-        } catch (err) { error = err }
-        res.json({
-            response: error ? 'ERROR' : itinerary,
-            success: error ? false : true,
-            error: error
-        })
+        } catch (err) {
+            res.json({
+                response: error ? 'ERROR' : itinerary,
+                success: error ? false : true,
+                error: err
+            })
+        }
     },
     modifyItinerary: async (req, res) => {
         const id = req.params.id

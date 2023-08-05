@@ -17,5 +17,5 @@ const itinerarySchema = new mongoose.Schema({
     city: {type: mongoose.Types.ObjectId, ref: 'cities'},
 })
 
-const Itinerary = mongoose.model('itinerary', itinerarySchema);
+const Itinerary = mongoose.model('itineraries', itinerarySchema);
 module.exports = Itinerary
