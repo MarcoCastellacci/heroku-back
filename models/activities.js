@@ -7,5 +7,5 @@ const activitySchema = new mongoose.Schema({
     itinerary: { type: mongoose.Types.ObjectId, ref: 'itinerary' },
 })
 
-const Activity = mongoose.model('activity', activitySchema);
+const Activity = mongoose.model('activities', activitySchema);
 module.exports = Activity;
